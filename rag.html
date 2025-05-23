@@ -222,6 +222,49 @@
             background: #f8f9fa;
         }
 
+        @media screen and (max-width: 768px) {
+            .comparison-table thead {
+                display: none;
+            }
+
+            .comparison-table,
+            .comparison-table tbody,
+            .comparison-table tr,
+            .comparison-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .comparison-table tr {
+                margin-bottom: 15px;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                padding: 15px;
+                background-color: #fff;
+            }
+
+            .comparison-table td {
+                text-align: left;
+                padding: 12px 20px;
+                position: relative;
+                padding-left: 50%;
+                border: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .comparison-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                top: 12px;
+                left: 20px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+                color: #555;
+            }
+        }
+
         .cta-section {
             background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
             color: white;
@@ -401,27 +444,28 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Knowledge Cutoff</strong></td>
-                        <td>❌ Limited to training data</td>
-                        <td>✅ Real-time information access</td>
+                        <td data-label="Challenge"><strong>Knowledge Cutoff</strong></td>
+                        <td data-label="Traditional LLMs">❌ Limited to training data</td>
+                        <td data-label="RAG Systems">✅ Real-time information access</td>
                     </tr>
                     <tr>
-                        <td><strong>Hallucinations</strong></td>
-                        <td>❌ Generates plausible but false information</td>
-                        <td>✅ Grounded in retrieved documents</td>
+                        <td data-label="Challenge"><strong>Hallucinations</strong></td>
+                        <td data-label="Traditional LLMs">❌ Generates plausible but false information</td>
+                        <td data-label="RAG Systems">✅ Grounded in retrieved documents</td>
                     </tr>
                     <tr>
-                        <td><strong>Domain Expertise</strong></td>
-                        <td>❌ Generic knowledge only</td>
-                        <td>✅ Specialized knowledge bases</td>
+                        <td data-label="Challenge"><strong>Domain Expertise</strong></td>
+                        <td data-label="Traditional LLMs">❌ Generic knowledge only</td>
+                        <td data-label="RAG Systems">✅ Specialized knowledge bases</td>
                     </tr>
                     <tr>
-                        <td><strong>Transparency</strong></td>
-                        <td>❌ Black box responses</td>
-                        <td>✅ Citable sources and references</td>
+                        <td data-label="Challenge"><strong>Transparency</strong></td>
+                        <td data-label="Traditional LLMs">❌ Black box responses</td>
+                        <td data-label="RAG Systems">✅ Citable sources and references</td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
 
         <!-- Interactive RAG Demo -->
