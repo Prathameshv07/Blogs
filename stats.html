@@ -26,10 +26,10 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: hidden;
         }
 
         .slide {
-            width: 90%;
             max-width: 1200px;
             height: 85vh;
             background: rgba(255, 255, 255, 0.95);
@@ -38,7 +38,17 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             display: none;
             overflow-y: auto;
-            position: relative;
+            /* position: relative; */
+            /* width: 90%; */
+            position: absolute;
+            /* top: 0;
+            left: 0; */
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            /* width: 100%; */
+            width: 90%;
+            margin: 0 auto;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
         }
@@ -157,7 +167,7 @@
         }
 
         /* Placeholder boxes */
-        .placeholder {
+        /* .placeholder {
             background: repeating-linear-gradient(
                 45deg,
                 #f8f9fa,
@@ -177,6 +187,13 @@
             align-items: center;
             justify-content: center;
             font-size: clamp(1rem, 2vw, 1.3rem);
+        } */
+
+        .placeholder {
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 25px 0;
+            min-height: 200px;
         }
 
         /* Navigation */
@@ -226,6 +243,16 @@
             font-weight: 500;
             font-size: clamp(0.8rem, 1.5vw, 1rem);
             color: #34495e;
+            /* position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(52, 73, 94, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+            color: #34495e; */
+            z-index: 100;
         }
 
         /* Speaker notes */
@@ -336,11 +363,18 @@
                 <p style="font-size: clamp(1.1rem, 2.2vw, 1.5rem); margin: 0;">A Guided Introduction</p>
             </div>
             
-            <div class="speaker-notes">
+            <!-- <div class="speaker-notes">
                 <h4>Speaker Notes:</h4>
                 <p><strong>Opening Hook:</strong> "Good morning! Let's start with a simple question: How do you choose what to watch, where to eat, or when to go out? Based on reviews, ratings, or weather reports. All of that is statistics in action!"</p>
                 <p><strong>Board:</strong> Write "STATISTICS = Making Sense of Numbers"</p>
                 <p><strong>Say:</strong> "Statistics helps us turn random numbers into stories and decisions."</p>
+            </div> -->
+            <div class="speaker-notes">
+                <h4>Speaker Notes:</h4>
+                <p><strong>Opening Hook (2 mins):</strong> "Good morning! Before we dive into textbooks, let's start with your daily life. Yesterday, how did you choose what to watch on Netflix? Check ratings, right? How do you pick a restaurant? Read reviews! Check the weather before going out? That's a weather report based on statistical models. All of these are statistics in action!"</p>
+                <p><strong>Board Work:</strong> Write "STATISTICS = Making Sense of Numbers" in large letters. Draw arrows pointing to: Reviews → Numbers → Decisions</p>
+                <p><strong>Engagement:</strong> "Statistics isn't just formulas and calculations. It's the tool that helps us make better decisions by understanding patterns in data. Today, we'll learn the foundation - how to organize and present data clearly."</p>
+                <p><strong>Learning Objectives:</strong> "By the end of today, you'll understand different types of data, how to organize them, and how to present them visually. This knowledge will help you in research, business, and everyday decision-making."</p>
             </div>
         </div>
 
@@ -432,11 +466,19 @@
                 <p style="text-align: center; margin: 0;"><strong>Key Point:</strong> We divide data into numbers and names. Both are useful, but we treat them differently.</p>
             </div>
             
-            <div class="speaker-notes">
+            <!-- <div class="speaker-notes">
                 <h4>Speaker Notes:</h4>
                 <p><strong>Board Example:</strong> Write "Age → Quantitative | Blood Type → Qualitative"</p>
                 <p><strong>Activity:</strong> Ask students to classify: "Height, Favorite Color, Number of Siblings, City Name"</p>
                 <p><strong>Emphasis:</strong> "You can do math with quantitative data, but not with qualitative!"</p>
+            </div> -->
+            <div class="speaker-notes">
+                <h4>Speaker Notes:</h4>
+                <p><strong>Interactive Start:</strong> "Let's do a quick activity. I'll say some characteristics, you tell me if they're numbers or categories: Height of students, Favorite color, Number of siblings, Blood type, Exam marks, Gender."</p>
+                <p><strong>Board Example:</strong> Draw two columns: "QUANTITATIVE (Numbers)" and "QUALITATIVE (Categories)". Fill them with student answers.</p>
+                <p><strong>Key Distinction:</strong> "The crucial difference: Can you do mathematical operations? You can average heights (quantitative) but you cannot average favorite colors (qualitative). This distinction determines what statistical methods we can use."</p>
+                <p><strong>Real-world Application:</strong> "In surveys, quantitative data gives us means and ranges (average salary: ₹45,000). Qualitative data gives us frequencies and modes (most popular course: Engineering - 60% of students)."</p>
+                <p><strong>Memory Tip:</strong> "Quantitative = Quantity (numbers), Qualitative = Quality (characteristics/labels)"</p>
             </div>
         </div>
 
@@ -537,11 +579,19 @@
                 <p>Examples: Number of children, cars owned, books read</p>
             </div>
             
-            <div class="speaker-notes">
+            <!-- <div class="speaker-notes">
                 <h4>Speaker Notes:</h4>
                 <p><strong>Board:</strong> Show how to collect and organize discrete data</p>
                 <p><strong>Ask:</strong> "How many students borrowed exactly 2 books?" (8 students)</p>
                 <p><strong>Explain:</strong> "Notice we can't have 2.5 books borrowed - that's why it's discrete!"</p>
+            </div> -->
+            <div class="speaker-notes">
+                <h4>Speaker Notes:</h4>
+                <p><strong>Real Example Setup:</strong> "Imagine we surveyed 20 students about books borrowed from library this month. Raw data might look like: 2, 1, 0, 3, 2, 1, 4, 2, 1, 2, 3, 1, 2, 0, 1, 2, 3, 2, 1, 2. This is messy! Let's organize it."</p>
+                <p><strong>Board Demonstration:</strong> "Step 1: List unique values (0,1,2,3,4). Step 2: Count frequency using tally marks. Step 3: Create the table." Show the counting process live.</p>
+                <p><strong>Key Insights from Table:</strong> "What does this tell us? Most students (8) borrowed 2 books. Only 1 student borrowed 4 books. 2 students didn't borrow any books - maybe they prefer online resources?"</p>
+                <p><strong>Discrete Emphasis:</strong> "Notice: We can't have 2.5 books borrowed. That's impossible! Discrete data = countable, separate values with no fractional parts."</p>
+                <p><strong>Applications:</strong> "Other discrete examples: Number of cars owned, children in family, apps on phone, goals scored in a match."</p>
             </div>
         </div>
 
@@ -661,10 +711,10 @@
             <div class="placeholder">
                 <div>
                     <h3 style="margin-bottom: 20px;">Histogram Sketch Area</h3>
-                    <p>• X-axis: Class Intervals (Marks Range)</p>
+                    <!-- <p>• X-axis: Class Intervals (Marks Range)</p>
                     <p>• Y-axis: Frequency (Number of Students)</p>
                     <p>• Bars touch each other (no gaps)</p>
-                    <p>• Width = Class Width, Height = Frequency</p>
+                    <p>• Width = Class Width, Height = Frequency</p> -->
                 </div>
             </div>
             
@@ -689,11 +739,16 @@
             <div class="placeholder">
                 <div>
                     <h3 style="margin-bottom: 20px;">Ogive Curves Diagram</h3>
-                    <p>• X-axis: Class Boundaries (Marks)</p>
+                    <!-- <p>• X-axis: Class Boundaries (Marks)</p>
                     <p>• Y-axis: Cumulative Frequency</p>
                     <p>• Less Than Ogive: Grows upward ↗</p>
                     <p>• More Than Ogive: Falls downward ↘</p>
-                    <p>• Intersection Point ≈ Median</p>
+                    <p>• Intersection Point ≈ Median</p> -->
+                    <p> </p>
+                    <p> </p>
+                    <p> </p>
+                    <p> </p>
+                    <p> </p>
                 </div>
             </div>
             
@@ -758,7 +813,8 @@
     </div>
 
     <!-- Notes Toggle -->
-    <button class="notes-toggle" onclick="toggleNotes()">📝 Speaker Notes</button>
+    <!-- <button class="notes-toggle" onclick="toggleNotes()">📝 Speaker Notes</button> -->
+    <button class="notes-toggle" onclick="toggleNotes()" style="display: none;">📝 Speaker Notes</button>
 
     <script>
         let currentSlide = 0;
@@ -768,9 +824,7 @@
 
         function showSlide(n) {
             slides[currentSlide].classList.remove('active');
-
-
-currentSlide = (n + totalSlides) % totalSlides;
+            currentSlide = (n + totalSlides) % totalSlides;
             slides[currentSlide].classList.add('active');
             
             // Update navigation buttons
@@ -829,6 +883,9 @@ currentSlide = (n + totalSlides) % totalSlides;
                 case 'N':
                     e.preventDefault();
                     toggleNotes();
+                    // Show/hide the notes button when toggling notes
+                    const notesBtn = document.querySelector('.notes-toggle');
+                    notesBtn.style.display = notesVisible ? 'none' : 'block';
                     break;
                 case 'Home':
                     e.preventDefault();
