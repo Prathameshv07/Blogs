@@ -433,6 +433,49 @@
             </div>
         </div>
 
+        <!-- Interactive RAG Demo -->
+        <div class="section">
+            <h2>🔧 How RAG Works: Interactive Demo</h2>
+            <p>Click on each step to see how RAG processes your query:</p>
+            
+            <div class="rag-diagram">
+                <div class="rag-step" onclick="activateStep(0)">
+                    <span class="step-icon">🔍</span>
+                    <div class="step-title">Query Processing</div>
+                    <div class="step-description">User query is analyzed and converted to embeddings</div>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="rag-step" onclick="activateStep(1)">
+                    <span class="step-icon">📚</span>
+                    <div class="step-title">Document Retrieval</div>
+                    <div class="step-description">Relevant documents are fetched from vector database</div>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="rag-step" onclick="activateStep(2)">
+                    <span class="step-icon">🧠</span>
+                    <div class="step-title">Context Augmentation</div>
+                    <div class="step-description">Retrieved content is combined with original query</div>
+                </div>
+                
+                <div class="arrow">→</div>
+                
+                <div class="rag-step" onclick="activateStep(3)">
+                    <span class="step-icon">✨</span>
+                    <div class="step-title">Response Generation</div>
+                    <div class="step-description">LLM generates grounded, accurate response</div>
+                </div>
+            </div>
+            
+            <!--<div id="step-details" class="interactive-demo">
+                <h3>Click on a step above to see detailed explanation</h3>
+                <p>Each step in the RAG pipeline serves a crucial role in ensuring accurate, contextual responses.</p>
+            </div>-->
+        </div>
+
         <!-- Problem Statement -->
         <div class="section">
             <h2>🎯 The Problem RAG Solves</h2>
@@ -472,48 +515,6 @@
 
         </div>
 
-        <!-- Interactive RAG Demo -->
-        <div class="section">
-            <h2>🔧 How RAG Works: Interactive Demo</h2>
-            <p>Click on each step to see how RAG processes your query:</p>
-            
-            <div class="rag-diagram">
-                <div class="rag-step" onclick="activateStep(0)">
-                    <span class="step-icon">🔍</span>
-                    <div class="step-title">Query Processing</div>
-                    <div class="step-description">User query is analyzed and converted to embeddings</div>
-                </div>
-                
-                <div class="arrow">→</div>
-                
-                <div class="rag-step" onclick="activateStep(1)">
-                    <span class="step-icon">📚</span>
-                    <div class="step-title">Document Retrieval</div>
-                    <div class="step-description">Relevant documents are fetched from vector database</div>
-                </div>
-                
-                <div class="arrow">→</div>
-                
-                <div class="rag-step" onclick="activateStep(2)">
-                    <span class="step-icon">🧠</span>
-                    <div class="step-title">Context Augmentation</div>
-                    <div class="step-description">Retrieved content is combined with original query</div>
-                </div>
-                
-                <div class="arrow">→</div>
-                
-                <div class="rag-step" onclick="activateStep(3)">
-                    <span class="step-icon">✨</span>
-                    <div class="step-title">Response Generation</div>
-                    <div class="step-description">LLM generates grounded, accurate response</div>
-                </div>
-            </div>
-            
-            <div id="step-details" class="interactive-demo">
-                <h3>Click on a step above to see detailed explanation</h3>
-                <p>Each step in the RAG pipeline serves a crucial role in ensuring accurate, contextual responses.</p>
-            </div>
-        </div>
 
         <!-- Implementation Section -->
         <!--<div class="section">
