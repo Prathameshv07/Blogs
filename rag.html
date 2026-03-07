@@ -420,9 +420,13 @@
         <!-- Introduction -->
         <div class="section">
             <h2>🚀 Introduction</h2>
+            <!--
             <p>In the rapidly evolving landscape of artificial intelligence, Large Language Models (LLMs) like GPT-4 have demonstrated remarkable capabilities in generating human-like text. However, they face a fundamental limitation: they operate solely on the knowledge encoded in their parameters during training, making them vulnerable to hallucinations and unable to access real-time information.</p>
             
             <p><strong>Retrieval-Augmented Generation (RAG)</strong> represents a paradigm shift that combines the best of both worlds: the fluency of generative models with the accuracy of information retrieval systems. This hybrid architecture powers modern AI assistants like Perplexity AI, Bing Copilot, and ChatGPT with browsing capabilities.</p>
+            -->
+            <p><strong>The Problem:</strong> While modern AI is incredibly good at talking, it’s stuck with a "frozen" brain. It only knows what it learned during its initial training, which often leads it to confidently guess (or flat-out lie) when asked about anything recent.</p>
+            <p><strong>The Solution:</strong> This is where RAG changes the game. Instead of relying on memory alone, it allows the AI to "look things up" in real-time before it speaks, combining the natural flow of a chatbot with the factual accuracy of a live search engine.</p>
             
             <div class="highlight">
                 <strong>💡 Key Insight:</strong> RAG transforms static language models into dynamic knowledge systems that can access, verify, and synthesize information from external sources in real-time.
@@ -517,72 +521,76 @@
             <p>Here's a practical implementation of a RAG system using Python:</p>
             
             <div class="code-block">
-<pre><code># Essential imports for RAG implementation
-from sentence_transformers import SentenceTransformer
-import faiss
-import numpy as np
-from transformers import pipeline
-
-class SimpleRAG:
-    def __init__(self):
-        # Initialize embedding model
-        self.encoder = SentenceTransformer('all-MiniLM-L6-v2')
-        
-        # Initialize generator
-        self.generator = pipeline('text-generation', 
-                                model='microsoft/DialoGPT-medium')
-        
-        # Vector database
-        self.index = None
-        self.documents = []
-    
-    def add_documents(self, docs):
-        """Add documents to the knowledge base"""
-        self.documents.extend(docs)
-        
-        # Create embeddings
-        embeddings = self.encoder.encode(docs)
-        
-        # Build FAISS index
-        if self.index is None:
-            self.index = faiss.IndexFlatIP(embeddings.shape[1])
-        
-        self.index.add(embeddings.astype('float32'))
-    
-    def retrieve(self, query, k=3):
-        """Retrieve relevant documents"""
-        query_embedding = self.encoder.encode([query])
-        
-        # Search for similar documents
-        scores, indices = self.index.search(
-            query_embedding.astype('float32'), k
-        )
-        
-        return [self.documents[i] for i in indices[0]]
-    
-    def generate_response(self, query):
-        """Generate RAG response"""
-        # Retrieve relevant context
-        context_docs = self.retrieve(query)
-        
-        # Combine query with context
-        context = "\n".join(context_docs)
-        prompt = f"Context: {context}\n\nQuestion: {query}\nAnswer:"
-        
-        # Generate response
-        response = self.generator(prompt, max_length=200)
-        return response[0]['generated_text']
-
-# Usage example
-rag = SimpleRAG()
-rag.add_documents([
-    "RAG combines retrieval and generation for better AI responses",
-    "Vector databases store document embeddings for similarity search",
-    "Transformer models can generate contextual responses"
-])
-
-response = rag.generate_response("How does RAG improve AI responses?")
-print(response)</code></pre>
+                <pre>
+                    <code>
+                        # Essential imports for RAG implementation
+                        from sentence_transformers import SentenceTransformer
+                        import faiss
+                        import numpy as np
+                        from transformers import pipeline
+                        
+                        class SimpleRAG:
+                            def __init__(self):
+                                # Initialize embedding model
+                                self.encoder = SentenceTransformer('all-MiniLM-L6-v2')
+                                
+                                # Initialize generator
+                                self.generator = pipeline('text-generation', 
+                                                        model='microsoft/DialoGPT-medium')
+                                
+                                # Vector database
+                                self.index = None
+                                self.documents = []
+                            
+                            def add_documents(self, docs):
+                                """Add documents to the knowledge base"""
+                                self.documents.extend(docs)
+                                
+                                # Create embeddings
+                                embeddings = self.encoder.encode(docs)
+                                
+                                # Build FAISS index
+                                if self.index is None:
+                                    self.index = faiss.IndexFlatIP(embeddings.shape[1])
+                                
+                                self.index.add(embeddings.astype('float32'))
+                            
+                            def retrieve(self, query, k=3):
+                                """Retrieve relevant documents"""
+                                query_embedding = self.encoder.encode([query])
+                                
+                                # Search for similar documents
+                                scores, indices = self.index.search(
+                                    query_embedding.astype('float32'), k
+                                )
+                                
+                                return [self.documents[i] for i in indices[0]]
+                            
+                            def generate_response(self, query):
+                                """Generate RAG response"""
+                                # Retrieve relevant context
+                                context_docs = self.retrieve(query)
+                                
+                                # Combine query with context
+                                context = "\n".join(context_docs)
+                                prompt = f"Context: {context}\n\nQuestion: {query}\nAnswer:"
+                                
+                                # Generate response
+                                response = self.generator(prompt, max_length=200)
+                                return response[0]['generated_text']
+                        
+                        # Usage example
+                        rag = SimpleRAG()
+                        rag.add_documents([
+                            "RAG combines retrieval and generation for better AI responses",
+                            "Vector databases store document embeddings for similarity search",
+                            "Transformer models can generate contextual responses"
+                        ])
+                        
+                        response = rag.generate_response("How does RAG improve AI responses?")
+                        print(response)
+                    </code>
+                </pre>
             </div>
         </div>-->
 
@@ -654,7 +662,7 @@ print(response)</code></pre>
         </div>
 
         <!-- Challenges -->
-        <div class="section">
+        <!--<div class="section">
             <h2>⚠️ Challenges & Solutions</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0;">
                 <div>
@@ -693,7 +701,7 @@ print(response)</code></pre>
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!-- Future Directions -->
         <div class="section">
@@ -754,20 +762,25 @@ print(response)</code></pre>
         </div>
 
         <!-- Call to Action -->
-        <div class="cta-section">
+        <!--<div class="cta-section">
             <h2>🚀 Ready to Build Your Own RAG System?</h2>
             <p>Start experimenting with RAG today using these resources and tutorials</p>
             <a href="https://github.com/langchain-ai/langchain" class="cta-button" target="_blank">Explore LangChain</a>
             <a href="https://www.trychroma.com/" class="cta-button" target="_blank">Try Chroma DB</a>
             <a href="https://docs.llamaindex.ai/" class="cta-button" target="_blank">Learn LlamaIndex</a>
-        </div>
+        </div>-->
 
         <!-- Conclusion -->
         <div class="section">
             <h2>🎯 Conclusion</h2>
-            <p>Retrieval-Augmented Generation represents a fundamental shift in how we approach AI systems. By combining the creative power of language models with the precision of information retrieval, RAG creates AI assistants that are not only more accurate but also more trustworthy and transparent.</p>
             
+            <!--
+            <p>Retrieval-Augmented Generation represents a fundamental shift in how we approach AI systems. By combining the creative power of language models with the precision of information retrieval, RAG creates AI assistants that are not only more accurate but also more trustworthy and transparent.</p>
             <p>As we move forward, RAG will continue to evolve, incorporating multimodal capabilities, real-time processing, and advanced reasoning. The future of AI lies not in isolated models but in systems that can dynamically access, process, and synthesize information from the vast repositories of human knowledge.</p>
+            -->
+            
+            <p><strong>The Impact:</strong> Ultimately, RAG turns AI from a creative storyteller into a reliable researcher. By letting the model double-check its facts against the real world, we’re creating assistants that aren't just smart—they're actually trustworthy.</p>
+            <p><strong>The Future:</strong> We’re moving away from AI being a "closed book" and toward systems that can think, search, and learn on the fly. The next generation of technology won't just guess the answer; it will know exactly where to find the truth in the massive sea of human knowledge.</p>
             
             <div class="highlight">
                 <strong>🔑 Key Takeaway:</strong> RAG isn't just a technical improvement—it's a paradigm shift toward AI systems that can truly understand and interact with our information-rich world.
@@ -775,14 +788,14 @@ print(response)</code></pre>
         </div>
 
         <!-- Footer -->
-        <div class="footer">
+        <!--<div class="footer">
             <p>Created with ❤️ for the AI community</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/prathameshv07">LinkedIn</a>
                 <a href="https://github.com/prathameshv07">GitHub</a>
             </div>
             <p style="margin-top: 20px; opacity: 0.8;">© Understanding RAG: The Future of AI Knowledge Systems</p>
-        </div>
+        </div>-->
     </div>
 
     <script>
